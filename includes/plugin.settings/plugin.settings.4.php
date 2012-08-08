@@ -126,8 +126,20 @@ Except for OpenID providers, each social network and identities provider will re
 						<input type="text" class="inputgnrc" 
 							value="<?php echo get_option( 'wsl_settings_' . $provider_id . '_app_key' ); ?>"
 							name="<?php echo 'wsl_settings_' . $provider_id . '_app_key' ?>" ></li>
-					<?php }; ?>	 
-
+					<?php }; ?>	
+					<?php if( ( $provider_id == "Mailru" ) || ( $provider_id == "Odnoklassniki" ) ) { // need key and id ?> 
+						<?php if ( $require_client_id ){ // key or id ? ?>
+							<li><label>Application Key</label>
+							<input type="text" class="inputgnrc" 
+								value="<?php echo get_option( 'wsl_settings_' . $provider_id . '_app_key' ); ?>"
+								name="<?php echo 'wsl_settings_' . $provider_id . '_app_key' ?>" ></li>
+						<?php } else { ?>
+							<li><label>Application ID</label>
+							<input type="text" class="inputgnrc"
+								value="<?php echo get_option( 'wsl_settings_' . $provider_id . '_app_id' ); ?>"
+								name="<?php echo 'wsl_settings_' . $provider_id . '_app_id' ?>" ></li>
+						<?php }; ?>	
+					<?php } ?>		
 					<li><label>Application Secret</label>
 					<input type="text" class="inputgnrc"
 						value="<?php echo get_option( 'wsl_settings_' . $provider_id . '_app_secret' ); ?>" 
